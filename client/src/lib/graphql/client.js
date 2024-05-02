@@ -28,7 +28,10 @@ const httpLink = concat(
 );
 
 const wsLink = new GraphQLWsLink(
-  createWsClient({ url: 'ws://localhost:9000/graphql' })
+  createWsClient({
+    url: 'ws://localhost:9000/graphql',
+    connectionParams: () => ({ accessToken: getAccessToken() }),
+  })
 );
 
 export const apolloClient = new ApolloClient({
