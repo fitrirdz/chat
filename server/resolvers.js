@@ -17,7 +17,6 @@ export const resolvers = {
       if (!user) throw unauthorizedError();
       const message = await createMessage(user, text);
       pubSub.publish('MESSAGE_ADDED', { messageAdded: message }); // Publish to subscribers on MESSAGE_ADDED topic
-      return createMessage(user, text);
     },
   },
 
